@@ -9,7 +9,7 @@ function p = predictOneVsAll(all_theta, X)
 %  for 4 examples) 
 
 m = size(X, 1);
-num_labels = size(all_theta, 1);   %10 in this example
+num_labels = size(all_theta, 1);
 
 % You need to return the following variables correctly 
 p = zeros(size(X, 1), 1);
@@ -30,12 +30,13 @@ X = [ones(m, 1) X];
 %       for each row.
 %       
 
-% prob = sigmoid(X*all_theta'); option 2
-prob = X*all_theta';
-for i = 1:1:m
-    [val, index] = max(prob(i,:));
-    p(i) = index;
-end
+thetaX = X*all_theta';
+h = sigmoid(thetaX);
+[comp, p] = max(h, [], 2);
+
+
+
+
 
 % =========================================================================
 
